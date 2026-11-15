@@ -1,0 +1,8 @@
+out/
+downloads/
+models/
+*.mp4
+*.webm
+*.m4a
+.venv/
+__pycache__/

@@ -1,0 +1,6 @@
+# 登入狀態與金鑰，等同帳號密碼
+.profile/
+.telegram.session*
+.env
+# 私訊內容
+data/
