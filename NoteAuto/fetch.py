@@ -18,6 +18,7 @@
   uv run fetch.py serve                   # 在本機 127.0.0.1:8765 開卡片牆；再 tailscale serve --bg 8765 給自己的裝置連
   uv run fetch.py check                   # 自我檢查
 
+資料（data/、.profile/、.env、.telegram.session）放在執行時所在的資料夾；要和程式分開放，就在資料夾裡跑 uv run <路徑>/fetch.py。
 web / resolve：用獨立的 Chrome 設定檔 .profile/，第一次請在跳出的視窗手動登入；只讀不寫。
 tg ：在 .env 放 TG_API_ID / TG_API_HASH（https://my.telegram.org 申請），第一次會問手機號碼與驗證碼。
 enrich：呼叫本機的 claude 指令（Claude Code，用它的登入與額度），不需要另外的 API 金鑰。
@@ -31,7 +32,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 from urllib.parse import parse_qs, urljoin, urlsplit
 
-ROOT = Path(__file__).parent
+ROOT = Path.cwd()  # 資料、登入狀態、.env 都放在執行時所在的資料夾，程式和資料可以分開放
 DATA = ROOT / "data"
 POST = re.compile(r"/(post|p|reel|reels|tv)/[\w-]+")
 META = re.compile(r"(^|\.)(threads\.com|threads\.net|instagram\.com)$")
