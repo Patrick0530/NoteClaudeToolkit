@@ -35,6 +35,9 @@ uv run python grab.py "https://www.youtube.com/watch?v=..." --whisper --language
 
 ## 輸出
 
+結果放在**執行時所在資料夾**的 `out/`（可用 `--out` 改）。想把素材和程式分開放，就在素材資料夾裡跑：
+`uv run --project <這個資料夾> python <這個資料夾>/grab.py …`。
+
 ```
 out/<video id>/
   manifest.json      # 來源、標題、長度、解析度、逐字稿來源、每張截圖的時間與原因、每張裁切圖
