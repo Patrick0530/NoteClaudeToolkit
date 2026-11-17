@@ -781,6 +781,7 @@ def wall():
     js = lambda v: json.dumps(v, ensure_ascii=False).replace("</", "<\\/")
     html = lambda cs: WALL_HTML.replace("__CATS__", cats).replace("__PIN__", js(pin)).replace("__CARDS__", js([{k: v for k, v in c.items() if k != "key"} for c in cs]))
     out = DATA / "wall.html"
+    DATA.mkdir(exist_ok=True)  # 還沒抓過任何東西的新資料夾
     out.write_text(WALL_HEAD + html(cards), "utf-8")
     # 手機版：上傳成 claude.ai 的 Artifact 用（使用者 2026-10-17 同意只傳文字）。不放截圖、網址去掉 query，疑似密碼／金鑰的卡片整張不放
     safe = [{**c, "img": "", "shot": "", "url": c["url"].split("?")[0].split("#")[0]} for c in cards
